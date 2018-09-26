@@ -1,0 +1,9 @@
+D:\coProject\O2OApi\src\Libraries\O2OApi.Data\bin\Release\netcoreapp2.1\O2OApi.Data.deps.json
+D:\coProject\O2OApi\src\Libraries\O2OApi.Data\bin\Release\netcoreapp2.1\O2OApi.Data.dll
+D:\coProject\O2OApi\src\Libraries\O2OApi.Data\bin\Release\netcoreapp2.1\O2OApi.Data.pdb
+D:\coProject\O2OApi\src\Libraries\O2OApi.Data\obj\Release\netcoreapp2.1\O2OApi.Data.csprojAssemblyReference.cache
+D:\coProject\O2OApi\src\Libraries\O2OApi.Data\obj\Release\netcoreapp2.1\O2OApi.Data.csproj.CoreCompileInputs.cache
+D:\coProject\O2OApi\src\Libraries\O2OApi.Data\obj\Release\netcoreapp2.1\O2OApi.Data.AssemblyInfoInputs.cache
+D:\coProject\O2OApi\src\Libraries\O2OApi.Data\obj\Release\netcoreapp2.1\O2OApi.Data.AssemblyInfo.cs
+D:\coProject\O2OApi\src\Libraries\O2OApi.Data\obj\Release\netcoreapp2.1\O2OApi.Data.dll
+D:\coProject\O2OApi\src\Libraries\O2OApi.Data\obj\Release\netcoreapp2.1\O2OApi.Data.pdb
