@@ -15,6 +15,7 @@ D:\coProject\O2OApi\src\Libraries\O2OApi.Core\bin\Debug\netcoreapp2.1\Microsoft.
 D:\coProject\O2OApi\src\Libraries\O2OApi.Core\bin\Debug\netcoreapp2.1\Microsoft.Extensions.FileProviders.Physical.xml
 D:\coProject\O2OApi\src\Libraries\O2OApi.Core\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Http.xml
 D:\coProject\O2OApi\src\Libraries\O2OApi.Core\bin\Debug\netcoreapp2.1\System.Data.SqlClient.xml
+D:\coProject\O2OApi\src\Libraries\O2OApi.Core\obj\Debug\netcoreapp2.1\O2OApi.Core.csprojAssemblyReference.cache
 D:\coProject\O2OApi\src\Libraries\O2OApi.Core\obj\Debug\netcoreapp2.1\O2OApi.Core.csproj.CoreCompileInputs.cache
 D:\coProject\O2OApi\src\Libraries\O2OApi.Core\obj\Debug\netcoreapp2.1\O2OApi.Core.AssemblyInfoInputs.cache
 D:\coProject\O2OApi\src\Libraries\O2OApi.Core\obj\Debug\netcoreapp2.1\O2OApi.Core.AssemblyInfo.cs

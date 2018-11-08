@@ -35,10 +35,18 @@ namespace O2OApi.Web.Controllers
             return Content(content);
         }
 
-        public IActionResult GetEleCode(string shopId)
+        public IActionResult GetEleCode(long shopId)
         {
-            var url = EleOAuth.GetOAuthUrl(shopId);
-            return Redirect(url);
+            var eleConfig = _o2OConfigService.GetConfigs(shopId: shopId);
+            if (eleConfig != null)
+            {
+                var url = EleOAuth.GetOAuthUrl(shopId);
+                return Redirect(url);
+            }
+            else
+            {
+                return Content("请联系管理员录入数据");
+            }
         }
          
 

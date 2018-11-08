@@ -90,6 +90,11 @@ namespace O2OApi.Web.Areas.ELE.Controllers
         {
             var config = _o2OConfigService.GetConfigs(shopId:shopId);
             var accessToken= _o2OConfigService.RefreshAccessToken(httpClientFactory: _httpClientFactory, configs: config);
+            if (accessToken == "error")
+            {
+                return RedirectToAction("GetEleCode","Home",new{ shopId =shopId});
+            }
+
             var infos = EleProducts.ProductPage(_httpClientFactory, shopId, config,accessToken);
 
             //获取商品信息

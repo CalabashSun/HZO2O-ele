@@ -18,7 +18,7 @@ namespace O2OApi.Services.Ele
         /// 换取code
         /// </summary>
         /// <returns></returns>
-        public static string GetOAuthUrl(string shopId)
+        public static string GetOAuthUrl(long shopId)
         {
             var appkey = EngineContext.Current.Resolve<O2OConfig>().Ele.appkey;
 

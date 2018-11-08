@@ -13,6 +13,14 @@ namespace O2OApi.Data.DataBase
         /// </summary>
         public long OrderId { get; set; }
         /// <summary>
+        /// 门店名称
+        /// </summary>
+        public string ShopName { get; set; }
+        /// <summary>
+        /// 收货人
+        /// </summary>
+        public string Consignee { get; set; }
+        /// <summary>
         /// 用户收获地址
         /// </summary>
         public string Address { get; set; }
@@ -40,8 +48,10 @@ namespace O2OApi.Data.DataBase
         public string Phone { get; set; }
 
         public string ShopId { get; set; }
-
-        public string ShopName { get; set; }
+        /// <summary>
+        /// 日第几单
+        /// </summary>
+        public int DaySeq { get; set; }
 
         public string Status { get; set; }
 

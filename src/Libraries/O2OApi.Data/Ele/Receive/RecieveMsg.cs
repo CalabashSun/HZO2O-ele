@@ -12,7 +12,7 @@ namespace O2OApi.Data.Ele.Receive
         /// <summary>
         /// 消息类型
         /// </summary>
-        public long type { get; set; }
+        public int type { get; set; }
 
         public string message { get; set; }
 
@@ -42,7 +42,7 @@ namespace O2OApi.Data.Ele.Receive
 
         public decimal deliverFee { get; set; }
 
-        public DateTime? deliverTime { get; set; }
+        public string deliverTime { get; set; }
 
         public string description { get; set; }
 
@@ -313,7 +313,7 @@ namespace O2OApi.Data.Ele.Receive
         /// <summary>
         /// 
         /// </summary>
-        public decimal weight { get; set; }
+        public decimal? weight { get; set; }
         /// <summary>
         /// 
         /// </summary>

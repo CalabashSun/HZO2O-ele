@@ -5,7 +5,7 @@ using Dapper.Contrib.Extensions;
 
 namespace O2OApi.Data.DataBase
 {
-    [Table("Config")]
+    [Table("EleConfig")]
     public class O2OConfigs:BaseEntity
     {
         /// <summary>

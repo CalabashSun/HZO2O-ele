@@ -12,6 +12,8 @@ namespace O2OApi.Data.DataBase
 
         public long ProductId { get; set; }
 
+        public string ProductName { get; set; }
+
         public long OrderProductId { get; set; }
 
         public decimal Price { get; set; }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Logging;
 using Newtonsoft.Json;
+using O2OApi.Core;
 using O2OApi.Core.Helper;
 using O2OApi.Data.DataBase;
 using O2OApi.Data.Ele.Receive;
@@ -22,16 +23,19 @@ namespace O2OApi.Web.Areas.ELE.Controllers
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IEleOrderInfoService _orderInfoService;
         private readonly IEleOrderProductService _orderProductService;
+        private readonly IEleOrderLogService _orderLogService;
 
 
         public AsyncReceiveController(IHttpClientFactory httpClientFactory
         , IEleOrderInfoService orderInfoService
         , IEleOrderProductService orderProductService
+        ,IEleOrderLogService orderLogService
             )
         {
             _httpClientFactory = httpClientFactory;
             _orderInfoService = orderInfoService;
             _orderProductService = orderProductService;
+            _orderLogService = orderLogService;
         }
 
         [HttpGet]
@@ -39,6 +43,7 @@ namespace O2OApi.Web.Areas.ELE.Controllers
         {
             return Content("{\"message\":\"ok\"}");
         }
+
         [HttpPost]
         public IActionResult Index([FromBody]RecieveMsgBase model)
         {
@@ -48,7 +53,16 @@ namespace O2OApi.Web.Areas.ELE.Controllers
             }
 
             var jsonResult = JsonConvert.SerializeObject(model);
-            LogsHelper.WriteLog(jsonResult);
+            //存储订单信息到数据库
+            var orderLog = new EleOrderLog
+            {
+                RequestId = model.requestId,
+                OrderType = model.type,
+                OrderContext=jsonResult,
+                OrderDetail=model.message,
+                CreateTime = DateTime.Now
+            };
+            _orderLogService.Add(orderLog);
             //用户下订单
             if (model.type == 10)
             {
@@ -57,12 +71,10 @@ namespace O2OApi.Web.Areas.ELE.Controllers
 
             return Content("{\"message\":\"ok\"}");
         }
-
-        public IActionResult Hello()
-        {
-            return Content("hello");
-        }
-
+        /// <summary>
+        /// 订单生效
+        /// </summary>
+        /// <param name="model"></param>
         private void OrderProcessing(RecieveMsgBase model)
         {
 
@@ -77,13 +89,15 @@ namespace O2OApi.Web.Areas.ELE.Controllers
                 orderInfo.CreatedAt = Convert.ToDateTime(orderData.createdAt);
                 orderInfo.ActiveAt = Convert.ToDateTime(orderData.activeAt);
                 orderInfo.DeliverFee = orderData.deliverFee;
-                orderInfo.DeliverTime = null;
+                orderInfo.DeliverTime =CommonHelper.ConvertNullTime(orderData.deliverTime);
                 orderInfo.Description = orderData.description;
                 orderInfo.Invoice = orderData.invoice;
                 orderInfo.Phone = orderData.phoneList[0];
                 orderInfo.ShopId = model.shopId;
                 orderInfo.ShopName = orderData.shopName;
                 orderInfo.Status = model.type.ToString();
+                orderInfo.Consignee = orderData.consignee;
+                orderInfo.DaySeq = orderData.daySn;
 
                 _orderInfoService.Add(orderInfo);
                 foreach (var orderProductInfo in orderData.groups)
@@ -92,6 +106,7 @@ namespace O2OApi.Web.Areas.ELE.Controllers
                     {
                         var orderProduct = new EleOrderProduct();
                         orderProduct.OrderId = orderData.orderId;
+                        orderProduct.ProductName = orderProductItem.name;
                         orderProduct.OrderProductId = orderProductItem.id;
                         orderProduct.ProductId = orderProductItem.vfoodId;
                         orderProduct.Price = orderProductItem.price;
@@ -133,9 +148,19 @@ namespace O2OApi.Web.Areas.ELE.Controllers
             var client = _httpClientFactory.CreateClient();
             //client.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("utf-8"));
             //var result =client.GetAsync("https://www.dongdongmm.com:444/ordertext.html").Result.Content.ReadAsStringAsync().Result;
-            var result = Encoding.GetEncoding("GBK").GetString(client.GetAsync("https://www.dongdongmm.com:444/ordertext.html")
+            var result = Encoding.GetEncoding("GBK").GetString(client.GetAsync("https://o2o.dongdongmm.com/eleTxt.html")
                 .Result.Content.ReadAsByteArrayAsync().Result);
             var baseData = JsonConvert.DeserializeObject<RecieveMsgBase>(result, new JsonSerializerSettings { StringEscapeHandling = StringEscapeHandling.EscapeNonAscii });
+            //存储订单信息到数据库
+            var orderLog = new EleOrderLog
+            {
+                RequestId = baseData.requestId,
+                OrderType = baseData.type,
+                OrderContext = result,
+                OrderDetail = baseData.message,
+                CreateTime = DateTime.Now
+            };
+            _orderLogService.Add(orderLog);
             OrderProcessing(model:baseData);
             return Content("success");
 

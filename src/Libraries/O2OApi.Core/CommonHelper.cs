@@ -376,6 +376,18 @@ namespace O2OApi.Core
             return Guid.NewGuid().ToString();
         }
 
+        public static DateTime? ConvertNullTime(string time)
+        {
+            if (string.IsNullOrEmpty(time))
+            {
+                return null;
+            }
+            else
+            {
+                return Convert.ToDateTime(time);
+            }
+        }
+
         #endregion
 
         #region Properties

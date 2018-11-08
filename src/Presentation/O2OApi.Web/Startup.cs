@@ -41,7 +41,7 @@ namespace O2OApi.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseDeveloperExceptionPage();
             }
 
             app.UseStaticFiles();

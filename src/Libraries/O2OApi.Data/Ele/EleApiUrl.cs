@@ -9,7 +9,7 @@ namespace O2OApi.Data.Ele
         /// <summary>
         /// 回调Url
         /// </summary>
-        public static string redirectUri = "https://www.dongdongmm.com:444";
+        public static string redirectUri = "https://o2o.dongdongmm.com";
         /// <summary>
         /// 获取授权codeUrl
         /// </summary>
