@@ -51,7 +51,7 @@ namespace O2OApi.Data.DataBase
         /// <summary>
         /// 日第几单
         /// </summary>
-        public int DaySeq { get; set; }
+        public string DaySeq { get; set; }
 
         public string Status { get; set; }
 
@@ -66,5 +66,9 @@ namespace O2OApi.Data.DataBase
         public DateTime? CancelOrderDescription { get; set; }
 
         public DateTime? CancelOrderCreatedAt { get; set; }
+        /// <summary>
+        /// 除配送费的商品原价
+        /// </summary>
+        public decimal TotalPrice { get; set; }
     }
 }

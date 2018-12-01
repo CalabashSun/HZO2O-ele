@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using O2OApi.Core;
 using O2OApi.Data.DataBase;
 using O2OApi.Services.DataServices;
 using O2OApi.Services.Ele;
@@ -40,7 +41,7 @@ namespace O2OApi.Web.Controllers
             var eleConfig = _o2OConfigService.GetConfigs(shopId: shopId);
             if (eleConfig != null)
             {
-                var url = EleOAuth.GetOAuthUrl(shopId);
+                var url = EleOAuth.GetOAuthUrl(eleConfig);
                 return Redirect(url);
             }
             else
@@ -66,5 +67,28 @@ namespace O2OApi.Web.Controllers
             }
             return "汉资餐饮:商家已授权";
         }
+
+        public IActionResult RefeshToken(string key)
+        {
+            if (key != "refreshhanztoken")
+                return Content("error!");
+            try
+            {
+                _o2OConfigService.ForceRefreshAccessToken(_httpClientFactory);
+                return Content("token更新成功");
+            }
+            catch
+            {
+                return Content("token更新失败请及时处理");
+            }
+
+        }
+
+        public IActionResult UseCommonHelper()
+        {
+            var pathInfo = CommonHelper.DefaultFileProvider.MapPath("~/cala");
+            return Content(pathInfo);
+        }
+
     }
 }

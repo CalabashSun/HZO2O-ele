@@ -13,10 +13,10 @@ namespace O2OApi.Data.Ele
         /// <summary>
         /// 获取授权codeUrl
         /// </summary>
-        public static string urlForGettingOAuthUrl = "https://open-api-sandbox.shop.ele.me/authorize?response_type=code&client_id={0}&redirect_uri={1}&scope=all&state={2}";
+        public static string urlForGettingOAuthUrl = "https://open-api.shop.ele.me/authorize?response_type=code&client_id={0}&redirect_uri={1}&scope=all&state={2}";
         /// <summary>
         /// 获取accesstokenUrl
         /// </summary>
-        public static string urlForGettingAccessToken = "https://open-api-sandbox.shop.ele.me/token";
+        public static string urlForGettingAccessToken = "https://open-api.shop.ele.me/token";
     }
 }

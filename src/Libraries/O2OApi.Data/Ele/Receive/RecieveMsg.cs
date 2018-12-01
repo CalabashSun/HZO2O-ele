@@ -171,7 +171,7 @@ namespace O2OApi.Data.Ele.Receive
         /// <summary>
         /// 
         /// </summary>
-        public List<string> orderActivities { get; set; }
+        public List<OrderActivitiesItem> orderActivities { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -382,6 +382,58 @@ namespace O2OApi.Data.Ele.Receive
         /// 
         /// </summary>
         public decimal weight { get; set; }
+    }
+
+    public class OrderActivitiesItem
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public int categoryId { get; set; }
+        /// <summary>
+        /// 在线支付立减优惠
+        /// </summary>
+        public string name { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal amount { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal elemePart { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal restaurantPart { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal familyPart { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public decimal userPart { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public long id { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<OrderAllPartiesPartListItem> orderAllPartiesPartList { get; set; }
+    }
+
+    public class OrderAllPartiesPartListItem
+    {
+        /// <summary>
+        /// 商家补贴
+        /// </summary>
+        public string partName { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string partAmount { get; set; }
     }
     #endregion
 

@@ -97,7 +97,9 @@ namespace O2OApi.Web.Areas.ELE.Controllers
                 orderInfo.ShopName = orderData.shopName;
                 orderInfo.Status = model.type.ToString();
                 orderInfo.Consignee = orderData.consignee;
-                orderInfo.DaySeq = orderData.daySn;
+                orderInfo.DaySeq = orderData.daySn.ToString();
+                orderInfo.Income = orderData.totalPrice;
+                orderInfo.TotalPrice = orderData.originalPrice - orderData.deliverFee;
 
                 _orderInfoService.Add(orderInfo);
                 foreach (var orderProductInfo in orderData.groups)

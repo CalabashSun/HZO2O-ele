@@ -10,6 +10,8 @@ namespace O2OApi.Data.DataBase
     {
         public long ShopId { get; set; }
 
+        public string ShopName { get; set; }
+
         public long CateId { get; set; }
 
         public long ProductId { get; set; }
@@ -21,5 +23,19 @@ namespace O2OApi.Data.DataBase
         public int IsValid { get; set; }
 
         public int RecentPopularity { get; set; }
+
+        public DateTime CreateTime { get; set; }
+
+        public string Zp_ProductId { get; set; }
+
+        public string Zp_ProductName { get; set; }
+
+        public DateTime? UpdateTime { get; set; }
+    }
+
+
+    public class TempEleProductInfo : EleProductInfo
+    {
+        public int DealState { get; set; } = 0;
     }
 }

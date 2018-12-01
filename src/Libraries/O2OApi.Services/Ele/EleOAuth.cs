@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using O2OApi.Core;
 using O2OApi.Core.Configuration;
 using O2OApi.Core.Infrastructure;
+using O2OApi.Data.DataBase;
 using O2OApi.Data.Ele;
 
 namespace O2OApi.Services.Ele
@@ -18,11 +19,9 @@ namespace O2OApi.Services.Ele
         /// 换取code
         /// </summary>
         /// <returns></returns>
-        public static string GetOAuthUrl(long shopId)
+        public static string GetOAuthUrl(O2OConfigs configs)
         {
-            var appkey = EngineContext.Current.Resolve<O2OConfig>().Ele.appkey;
-
-            var url = string.Format(EleApiUrl.urlForGettingOAuthUrl, appkey, HttpUtility.HtmlEncode(EleApiUrl.redirectUri),shopId);
+            var url = string.Format(EleApiUrl.urlForGettingOAuthUrl, configs.AppKey, HttpUtility.HtmlEncode(EleApiUrl.redirectUri),configs.ShopId);
             return url;
         }
         /// <summary>
