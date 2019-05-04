@@ -70,5 +70,10 @@ namespace O2OApi.Data.DataBase
         /// 除配送费的商品原价
         /// </summary>
         public decimal TotalPrice { get; set; }
+        /// <summary>
+        /// 订单创建时间
+        /// </summary>
+        public DateTime? CreateTime { get; set; }
+
     }
 }

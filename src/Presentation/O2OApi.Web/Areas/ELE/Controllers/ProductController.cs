@@ -105,7 +105,7 @@ namespace O2OApi.Web.Areas.ELE.Controllers
             {
                 infos = EleProducts.ProductPage(_httpClientFactory, config.ShopId, config, accessToken);
             }
-            catch
+            catch(Exception ex)
             {
                 return Content("菜品更新失败，请联系IT部处理");
             }

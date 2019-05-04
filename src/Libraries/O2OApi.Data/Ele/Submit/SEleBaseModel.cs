@@ -44,4 +44,47 @@ namespace O2OApi.Data.Ele.Submit
         /// </summary>
         public string timestamp { get; set; }= ((long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalSeconds).ToString();
     }
+
+
+
+    public class SEleJsonBaseModel
+    {
+        /// <summary>
+        /// 标示协议版本，固定为 1.0.0
+        /// </summary>
+        public string nop { get; set; } = "1.0.0";
+        /// <summary>
+        /// guid
+        /// </summary>
+        public string id { get; set; }
+        /// <summary>
+        /// 公共参数
+        /// </summary>
+        public JsonMetas metas { get; set; } = new JsonMetas();
+        /// <summary>
+        /// 接口名称
+        /// </summary>
+        public string action { get; set; }
+        /// <summary>
+        /// access_token
+        /// </summary>
+        public string token { get; set; }
+        /// <summary>
+        /// 签名
+        /// </summary>
+        public string signature { get; set; }
+
+    }
+
+    public class JsonMetas
+    {
+        /// <summary>
+        /// 应用的app key
+        /// </summary>
+        public string app_key { get; set; }
+        /// <summary>
+        /// 时间戳
+        /// </summary>
+        public long timestamp { get; set; } = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalSeconds;
+    }
 }

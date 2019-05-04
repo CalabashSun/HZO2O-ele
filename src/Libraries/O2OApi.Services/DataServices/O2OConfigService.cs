@@ -64,7 +64,7 @@ namespace O2OApi.Services.DataServices
 
                 configs.AccessToken = tokenInfo.access_token;
                 configs.RefershToken = tokenInfo.refresh_token;
-                configs.ExpiresTime = DateTime.Now.AddSeconds(Convert.ToDouble(tokenInfo.expires_in) - 1000);
+                configs.ExpiresTime = DateTime.Now.AddSeconds(Convert.ToDouble(tokenInfo.expires_in) - 80000);
                 _Conn.Update<O2OConfigs>(configs);
                 return tokenInfo.access_token;
             }

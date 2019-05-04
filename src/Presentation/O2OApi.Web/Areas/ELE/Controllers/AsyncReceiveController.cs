@@ -69,6 +69,11 @@ namespace O2OApi.Web.Areas.ELE.Controllers
                 OrderProcessing(model);
             }
 
+            if (model.type == 12)
+            {
+                OrderConfirm(model);
+            }
+
             return Content("{\"message\":\"ok\"}");
         }
         /// <summary>
@@ -100,7 +105,8 @@ namespace O2OApi.Web.Areas.ELE.Controllers
                 orderInfo.DaySeq = orderData.daySn.ToString();
                 orderInfo.Income = orderData.totalPrice;
                 orderInfo.TotalPrice = orderData.originalPrice - orderData.deliverFee;
-
+                orderInfo.CreateTime=DateTime.Now;
+                
                 _orderInfoService.Add(orderInfo);
                 foreach (var orderProductInfo in orderData.groups)
                 {
@@ -143,6 +149,10 @@ namespace O2OApi.Web.Areas.ELE.Controllers
 
                 }
             }
+        }
+
+        private void OrderConfirm(RecieveMsgBase model)
+        {
         }
 
         public IActionResult TestConvertData()

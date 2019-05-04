@@ -170,7 +170,7 @@ namespace O2OApi.Data.Ele.Response
         /// <summary>
         /// 
         /// </summary>
-        public int specId { get; set; }
+        public long specId { get; set; }
         /// <summary>
         /// 大份
         /// </summary>
