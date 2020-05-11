@@ -32,6 +32,10 @@ namespace O2OApi.Services
 
             //日志
             services.Add(new ServiceDescriptor(serviceType: typeof(IEleOrderLogService), implementationType: typeof(EleOrderLogService), lifetime: ServiceLifetime.Transient));
+
+            services.Add(new ServiceDescriptor(serviceType: typeof(IEleOrderPriceService), implementationType: typeof(EleOrderPriceService), lifetime: ServiceLifetime.Transient));
+
+            services.Add(new ServiceDescriptor(serviceType: typeof(IEleOrderCancelService), implementationType: typeof(EleOrderCancelService), lifetime: ServiceLifetime.Transient));
         }
 
         public int Order { get; } = 1;

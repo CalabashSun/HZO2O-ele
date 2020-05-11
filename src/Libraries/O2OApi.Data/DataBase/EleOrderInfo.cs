@@ -66,6 +66,8 @@ namespace O2OApi.Data.DataBase
         public DateTime? CancelOrderDescription { get; set; }
 
         public DateTime? CancelOrderCreatedAt { get; set; }
+
+        public int DinnersNumber { get; set; } = 1;
         /// <summary>
         /// 除配送费的商品原价
         /// </summary>

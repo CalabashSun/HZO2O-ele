@@ -437,4 +437,38 @@ namespace O2OApi.Data.Ele.Receive
     }
     #endregion
 
+    #region 取消订单消息
+
+    public class CancelOrderModel
+    {
+        public long orderId { get; set; }
+        /// <summary>
+        /// noRefund 未申请退单
+        /// applied 用户申请退单
+        /// rejected 店铺拒绝退单
+        /// arbitrating 客服仲裁
+        /// failed 退单失败
+        /// successful 退单成功
+        /// </summary>
+        public string refundStatus { get; set; }
+        /// <summary>
+        /// 退单操作原因描述
+        /// </summary>
+        public string reason { get; set; }
+        /// <summary>
+        /// 门店id
+        /// </summary>
+        public string shopId { get; set; }
+        /// <summary>
+        /// 退单类型
+        /// </summary>
+        public string refundType { get; set; }
+        /// <summary>
+        /// 退款金额
+        /// </summary>
+        public string totalPrice { get; set; }
+    }
+
+    #endregion
+
 }

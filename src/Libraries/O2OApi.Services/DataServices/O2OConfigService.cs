@@ -23,6 +23,14 @@ namespace O2OApi.Services.DataServices
         string RefreshAccessToken(IHttpClientFactory httpClientFactory);
 
         string ForceRefreshAccessToken(IHttpClientFactory httpClientFactory);
+        /// <summary>
+        /// 乐享accessToken
+        /// </summary>
+        /// <param name="httpClientFactory"></param>
+        /// <param name="appKey"></param>
+        /// <param name="appSecret"></param>
+        /// <returns></returns>
+        string GetLeXiangAccessToken(IHttpClientFactory httpClientFactory, string appKey, string appSecret);
     }
 
     public class O2OConfigService: Repository<O2OConfigs>, IO2OConfigService
@@ -89,6 +97,18 @@ namespace O2OApi.Services.DataServices
             configs.ExpiresTime = DateTime.Now.AddSeconds(Convert.ToDouble(tokenInfo.expires_in) - 1000);
             _Conn.Update<O2OConfigs>(configs);
             return tokenInfo.access_token;
+        }
+
+        public string GetLeXiangAccessToken(IHttpClientFactory httpClientFactory,string appKey,string appSecret)
+        {
+            var client = httpClientFactory.CreateClient();
+            var keyValues = new Dictionary<string, string>();
+            keyValues["grant_type"] = "client_credentials";
+            keyValues["app_key"] = appKey;
+            keyValues["app_secret"] = appSecret;
+            FormUrlEncodedContent content = new FormUrlEncodedContent(keyValues);
+            var result = client.PostAsync("https://lxapi.lexiangla.com/cgi-bin/token", content).Result.Content.ReadAsStringAsync().Result;
+            return result;
         }
     }
 }

@@ -37,5 +37,11 @@ namespace O2OApi.Web.Areas.ELE.Controllers
             var result = _o2OConfigService.RefreshAccessToken(_httpClientFactory);
             return Content(result == "error" ? "error" : "success");
         }
+
+        public IActionResult LeXiangToken(string appkey,string appSecret) 
+        {
+            var reuslt = _o2OConfigService.GetLeXiangAccessToken(_httpClientFactory, appkey, appSecret);
+            return Content(reuslt);
+        }
     }
 }

@@ -24,18 +24,21 @@ namespace O2OApi.Web.Areas.ELE.Controllers
         private readonly IEleOrderInfoService _orderInfoService;
         private readonly IEleOrderProductService _orderProductService;
         private readonly IEleOrderLogService _orderLogService;
+        private readonly IEleOrderCancelService _orderCancelService;
 
 
         public AsyncReceiveController(IHttpClientFactory httpClientFactory
         , IEleOrderInfoService orderInfoService
         , IEleOrderProductService orderProductService
         ,IEleOrderLogService orderLogService
+        ,IEleOrderCancelService oredrCancelService
             )
         {
             _httpClientFactory = httpClientFactory;
             _orderInfoService = orderInfoService;
             _orderProductService = orderProductService;
             _orderLogService = orderLogService;
+            _orderCancelService = oredrCancelService;
         }
 
         [HttpGet]
@@ -72,6 +75,12 @@ namespace O2OApi.Web.Areas.ELE.Controllers
             if (model.type == 12)
             {
                 OrderConfirm(model);
+            }
+
+            if (model.type == 20 || model.type == 23 || model.type == 25|| model.type == 30 || model.type == 33 || model.type == 35)
+            {
+                //用户取消订单，用户退单
+                OrderCancel(model);
             }
 
             return Content("{\"message\":\"ok\"}");
@@ -153,6 +162,23 @@ namespace O2OApi.Web.Areas.ELE.Controllers
 
         private void OrderConfirm(RecieveMsgBase model)
         {
+        }
+
+
+        private void OrderCancel(RecieveMsgBase model)
+        {
+            var orderData = JsonConvert.DeserializeObject<CancelOrderModel>(model.message, new JsonSerializerSettings { StringEscapeHandling = StringEscapeHandling.EscapeNonAscii });
+            if (orderData.refundStatus == "successful")
+            {
+                var cancelModel=new EleOrderCancel
+                {
+                    OrderId = orderData.orderId,
+                    CreateTime = DateTime.Now,
+                    Reason = orderData.reason,
+                    ReasonCode = orderData.refundStatus
+                };
+                _orderCancelService.AddCancelRecord(cancelModel);
+            }
         }
 
         public IActionResult TestConvertData()
