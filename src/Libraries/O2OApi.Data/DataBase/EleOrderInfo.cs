@@ -73,6 +73,10 @@ namespace O2OApi.Data.DataBase
         /// </summary>
         public decimal TotalPrice { get; set; }
         /// <summary>
+        /// 商家实收
+        /// </summary>
+        public decimal WmPoiReceive { get; set; }
+        /// <summary>
         /// 订单创建时间
         /// </summary>
         public DateTime? CreateTime { get; set; }

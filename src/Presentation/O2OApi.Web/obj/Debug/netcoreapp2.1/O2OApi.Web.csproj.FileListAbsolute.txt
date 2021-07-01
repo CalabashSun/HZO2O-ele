@@ -1,3 +1,5 @@
+D:\coProject\O2OApi\src\Presentation\O2OApi.Web\bin\Debug\netcoreapp2.1\appsettings.Development.json
+D:\coProject\O2OApi\src\Presentation\O2OApi.Web\bin\Debug\netcoreapp2.1\appsettings.json
 D:\coProject\O2OApi\src\Presentation\O2OApi.Web\bin\Debug\netcoreapp2.1\O2OApi.Web.deps.json
 D:\coProject\O2OApi\src\Presentation\O2OApi.Web\bin\Debug\netcoreapp2.1\O2OApi.Web.runtimeconfig.json
 D:\coProject\O2OApi\src\Presentation\O2OApi.Web\bin\Debug\netcoreapp2.1\O2OApi.Web.runtimeconfig.dev.json
@@ -18,7 +20,4 @@ D:\coProject\O2OApi\src\Presentation\O2OApi.Web\obj\Debug\netcoreapp2.1\O2OApi.W
 D:\coProject\O2OApi\src\Presentation\O2OApi.Web\obj\Debug\netcoreapp2.1\O2OApi.Web.csproj.CopyComplete
 D:\coProject\O2OApi\src\Presentation\O2OApi.Web\obj\Debug\netcoreapp2.1\O2OApi.Web.dll
 D:\coProject\O2OApi\src\Presentation\O2OApi.Web\obj\Debug\netcoreapp2.1\O2OApi.Web.pdb
-D:\coProject\O2OApi\src\Presentation\O2OApi.Web\bin\Debug\netcoreapp2.1\appsettings.Development.json
-D:\coProject\O2OApi\src\Presentation\O2OApi.Web\bin\Debug\netcoreapp2.1\appsettings.json
-D:\coProject\O2OApi\src\Presentation\O2OApi.Web\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
 D:\coProject\O2OApi\src\Presentation\O2OApi.Web\obj\Debug\netcoreapp2.1\O2OApi.Web.genruntimeconfig.cache

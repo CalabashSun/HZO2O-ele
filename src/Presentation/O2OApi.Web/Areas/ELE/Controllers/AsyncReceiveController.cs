@@ -114,6 +114,7 @@ namespace O2OApi.Web.Areas.ELE.Controllers
                 orderInfo.DaySeq = orderData.daySn.ToString();
                 orderInfo.Income = orderData.totalPrice;
                 orderInfo.TotalPrice = orderData.originalPrice - orderData.deliverFee;
+                orderInfo.WmPoiReceive = orderData.income;
                 orderInfo.CreateTime=DateTime.Now;
                 
                 _orderInfoService.Add(orderInfo);

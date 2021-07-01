@@ -121,9 +121,9 @@ namespace O2OApi.Data.Ele.Receive
         /// </summary>
         public string invoiced { get; set; }
         /// <summary>
-        /// 
+        /// 商家实收
         /// </summary>
-        public double income { get; set; }
+        public decimal income { get; set; }
         /// <summary>
         /// 
         /// </summary>
